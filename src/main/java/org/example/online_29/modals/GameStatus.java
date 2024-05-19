@@ -7,5 +7,5 @@ public enum GameStatus {
     WAITING_FOR_BID,
     WAITING_FOR_CARD,
     INPROGRESS,
-    GAME_OVER
+    FINISHED, GAME_OVER
 }

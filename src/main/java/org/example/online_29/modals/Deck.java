@@ -1,6 +1,8 @@
 package org.example.online_29.modals;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck {
@@ -13,6 +15,11 @@ public class Deck {
                cards.add(new Card(suit,rank));
            }
        }
+    }
+
+    public void shuffle() {
+        // Shuffle the deck
+        Collections.shuffle(cards);
     }
 
 }
