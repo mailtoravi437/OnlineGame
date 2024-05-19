@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
-public class Game {
+public class Game implements Observable{
     private String gameId;
     private List<Player> playersList;
     private Deck deck;
@@ -27,6 +27,14 @@ public class Game {
         this.playersList.add(player);
     }
 
+    @Override
+    public void notifyPlayers() {
+        for(Player player : playersList) {
+            // Notify the players
+            player.update(player);
+        }
+    }
+
     public void startGame() {
         this.deck = new Deck();
         this.deck.shuffle();
@@ -39,6 +47,13 @@ public class Game {
 
     public void nextPlayer() {
         this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.playersList.size();
+    }
+
+    public void playCard(Card card) {
+        Player currentPlayer = this.playersList.get(this.currentPlayerIndex);
+        currentPlayer.addCardtoHand(card);
+        notifyPlayers();
+        this.nextPlayer();
     }
 
 

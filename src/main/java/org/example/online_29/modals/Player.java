@@ -2,12 +2,10 @@ package org.example.online_29.modals;
 
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Data
-public class Player {
+public class Player implements Observer{
     private String id;
     private String name;
     private String email;
@@ -21,6 +19,11 @@ public class Player {
 
     public void addCardtoHand(Card card) {
         this.hand.add(card);
+    }
+
+    public void update(Player player) {
+        // Update the player
+        System.out.println("Move updated by player "+ player.getName());
     }
 
 }
